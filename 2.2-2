@@ -1,0 +1,15 @@
+for i = 1 to A.length - 1    // c1 * n
+    smallest = A[i]          // c2 * (n-1)
+    smallest_idx = i         // c3 * (n-1)
+    for j = i + 1 to A.length    // c4 * sigma(2..n, n) = c4 * (1/2 * n * (n + 1) - 1) 
+        if A[j] < A[i]           // c5 * sigma(2..n - 1, n) = c5 * ((1/2 * (n - 1) * n) - 1) 
+            smallest = A[j]      // c6 * sigma(2..n - 1, times-if) = (best case) c6 * (n - 2) = (worst case) c6 * ((1/2 * (n - 1) * n) - 1)
+            smallest_idx = j     // c7 * sigma(2..n - 1, times-if) = (best case) c7 * (n - 2) = (worst case) c7 * ((1/2 * (n - 1) * n) - 1)
+    A[smallest_idx] = A[j]   // c8 * (n-1)
+    A[j] = smallest          // c9 * (n-1)
+
+Loop invariant (outer loop): elements between A[i - 1] and A[i] are sorted
+Loop invariant (inner loop): smallest contains the smallest element of A between i and j indexes, smallest_idx its array index
+
+Best case: O(n^2)
+Worst case: O(n^2)
