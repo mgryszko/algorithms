@@ -1,0 +1,12 @@
+Input: binary integers A and B represented as sequence of bits [a1, ..., an], [b1, ..., bn] where ai/1 <= i <= n/ ∊ {0, 1}
+Output: sum of A and B as sequence of bits [c1, ..., cn+1]
+
+shift = 0
+for i = 1 to A.length
+    quotient = (A[i] + B[i] + shift) div 2
+    remainder = (A[i] + B[i] + shift) mod 2
+    C[i] = remainder
+    shift = quotient
+C[i + 1] = shift 
+
+Loop invariant: C[1] to C[i] - result of the division up to i index; shift - exceeding bit to be added to the C[i + 1] position

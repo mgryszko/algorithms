@@ -1,0 +1,6 @@
+for i = 1 to A.length
+    if A[i] == v
+        return i
+return NIL
+
+Loop invariant: index of v element not found yet
