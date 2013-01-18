@@ -1,0 +1,12 @@
+for j = 2 to A.length
+    key = A[j]
+    i = BINARY-SEARCH(A, key, 1, j - 1)
+    if i != NIL
+        copy array range A<i, j - 1> to A<i + 1, j>
+        A[i] = key
+    elseif key < A[1]
+        copy array range A<1, j - 1> to A<2, j>
+        A[1] = key
+    // else i = j
+            
+Worst-case running time is theta(n * lg n) if 'copy array range' operation worst-case running time is theta(1) 

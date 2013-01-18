@@ -1,0 +1,17 @@
+BINARY-SEARCH(A, v)
+    BINARY-SEARCH-RECURSIVE(A, v, 1, A.length) 
+
+BINARY-SEARCH-RECURSIVE(A, v, low, high)
+    pivot = low + floor((high - low) / 2)
+    if v == A[pivot]
+        return pivot
+    if low == high
+        return NIL
+    if v > A[pivot]
+        BINARY-SEARCH-RECURSIVE(A, v, pivot + 1, high)       
+    else 
+        BINARY-SEARCH-RECURSIVE(A, v , low, pivot - 1)
+
+T(n):
+    1              if n = 1
+    T((n - 1) / 2) if n = 2^k for k >= 1
